@@ -1,0 +1,17 @@
+{% extends "account/layout.html" %}
+
+{% block head %}
+    <title>My account</title>>
+{% endblock %}
+
+{% block body %}
+        <h1>
+            My account
+        </h1>
+        <div>
+            Username: {{ username }} <br>
+            First name: {{ first_name }} <br>
+            Last name: {{ last_name }} <br>
+            Email: {{ email }} <br>
+        </div>
+{% endblock %}
