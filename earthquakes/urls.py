@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 
+app_name = 'earthquakes'
 urlpatterns = [
-    path("earthquakeendpoint", views.index, name="index"),
+    path("", views.earthquakes, name="earthquakes"),
+    path("addstatus", views.addstatus, name="addstatus"),
+    path("earthquake/<int:id>", views.earthquake, name="earthquake")
 ]

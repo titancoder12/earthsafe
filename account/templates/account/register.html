@@ -1,20 +1,31 @@
 {% extends "account/layout.html" %}
 
 {% block head %}
-    <title>Register</title>>
+    <title>Register</title>
 {% endblock %}
 
 {% block body %}
-        <h1>
-            Register for earthsafe!
-        </h1>
-        <form acton="{% url 'register' %}" method="post">
+        <h2 class="ps-3 mt-1">
+            Register for Earthsafe!
+        </h2>
+
+        <form acton="{% url 'account:register' %}" method="post" class="ps-3 pe-5">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="text" name="email" placeholder="Email"><br>
-            <input type="text" name="firstname" placeholder="First name"><br>
-            <input type="text" name="lastname" placeholder="Last name"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <input type="submit" value="Register">
+            <div class="mb-1">
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="mb-1">
+                <input type="email" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="mb-1">
+                <input type="text" class="form-control" name="firstname" placeholder="First name">
+            </div>
+            <div class="mb-1">
+                <input type="text" class="form-control" name="lastname" placeholder="Last name">
+            </div>
+            <div class="mb-1">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <input type="submit" class ="btn btn-primary" value="Register!">
         </form>
 {% endblock %}

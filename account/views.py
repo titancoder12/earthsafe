@@ -20,10 +20,7 @@ def index(request):
             "last_name": last_name,
         })
     else:
-        return HttpResponseRedirect(reverse("login"))
-
-def viewaccount(request):
-    pass
+        return HttpResponseRedirect(reverse("account:login"))
 
 def register(request):
     if request.method == "POST":
@@ -53,14 +50,13 @@ def register(request):
         # Login user
         dlogin(request, user)
 
-        # Return a redirect to main page after created account TODO
-        return HttpResponseRedirect(reverse("index"))
+        # Return a redirect to main page after created account
+        return HttpResponseRedirect(reverse("account:index"))
 
     # Render registration page
     return render(request, "account/register.html")
 
 def login(request):
-    print("LOGIN!")
     if request.method == "POST":
 
         # Get details
@@ -76,8 +72,9 @@ def login(request):
             dlogin(request, user)
 
             # Redirect to main page
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("account:index"))
         else:
+            print("INVALID")
             return render(request, "account/login.html", {
                 "message": "Invalid Credentials."
             })
@@ -87,5 +84,5 @@ def login(request):
 
 def logout(request):
     dlogout(request)
-    return HttpResponseRedirect(reverse("login"))
+    return HttpResponseRedirect(reverse("account:login"))
     

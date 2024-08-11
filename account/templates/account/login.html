@@ -1,17 +1,21 @@
 {% extends "account/layout.html" %}
 
 {% block head %}
-    <title>Login</title>>
+    <title>Login</title>
 {% endblock %}
 
 {% block body %}
-        <h1>
+        <h2 class="ps-3 mt-1">
             Login
-        </h1>
-        <form acton="{% url 'register' %}" method="post">
+        </h2>
+        <form acton="{% url 'account:login' %}" method="post" class="ps-3 pe-5">
             {% csrf_token %}
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <input type="submit" value="Login">
+            <div class="mb-3">
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <input type="submit" class ="btn btn-primary" value="Login">
         </form>
 {% endblock %}

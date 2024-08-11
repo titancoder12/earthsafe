@@ -1,0 +1,29 @@
+{% extends 'earthquakes/layout.html' %}
+{% load custom_filter %}
+
+{% block head %}
+    <title>Earthquake</title>
+    </script>
+{% endblock %}
+
+{% block body %}
+    {% for status in statuses %}
+        <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">{% if status.user.first_name != '' %}{{ status.user.first_name }} {{ status.user.last_name }}{% else %}{{ status.user }}{% endif %}</h5>
+                    <small>
+                    {% if status.status == "green" %}<button type="button" class="btn btn-success me-5 mt-2">I am ok</button>{% endif %}
+                    {% if status.status == "yellow" %}<button type="button" class="btn btn-warrning me-5 mt-2">I need help</button>{% endif %}
+                    {% if status.status == "red" %}<button type="button" class="btn btn-danger me-5 mt-2">I need help immediately</button>{% endif %}
+                    </small>
+                </div>
+                <p class="mb-3">
+                    {{ status.user.email }}
+                </p>
+            </a>
+        </div>
+    {% empty %}
+        <div class="ps-3 mt-1"><h2>No one has uploaded their status yet.</h2></div>
+    {% endfor %}
+{% endblock %}
