@@ -4,8 +4,8 @@
 {% block head %}
     <title>Earthquakes</title>
     <script>
+
         function addstatus(color, earthquake_id) {
-            location.reload();
             const data = {
                 "status": color,
                 "earthquake_id": earthquake_id
@@ -22,7 +22,7 @@
                 },
                 body: JSON.stringify(data) // Convert the JavaScript object to a JSON string
             });
-            document.querySelector(`#${color}`).classList = "btn btn-success"
+            //document.querySelector(`#${color}`).classList = "btn btn-success"
             location.reload();
 
         }
